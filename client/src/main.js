@@ -893,6 +893,7 @@ async function renderProfile(app, username) {
     // Posts grid
     const postsGrid = document.getElementById('user-posts');
     if (!postsGrid) return;
+    postsGrid.innerHTML = ''; // Prevent race condition duplicates
     if (postsData.posts.length === 0) {
       postsGrid.innerHTML = `<div class="empty-state"><div class="empty-icon">📝</div><h3>No posts yet</h3><p>${isOwner ? 'Share your first post!' : `${user.fullName || user.username} hasn't posted yet.`}</p></div>`;
     } else {
